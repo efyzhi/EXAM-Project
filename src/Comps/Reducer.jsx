@@ -24,6 +24,7 @@ function reducer(state, action){
       case 'Reset':{
         return initialState
       }
+      default: throw error()
   } 
 
   }
