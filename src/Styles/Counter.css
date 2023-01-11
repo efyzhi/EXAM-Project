@@ -1,3 +1,12 @@
+* {
+  @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+}
+
+.count {
+  font-family: 'Kumbh Sans', sans-serif;
+  font: 500px;
+}
+
 .counter-wrapper {
     display: flex;
     flex-direction: column;
@@ -21,12 +30,14 @@
     background-color: green;
     border: none;
     border-radius: 30px;
+    color:#fff;
 }
 
 .btn-sec {
     background-color: red;
     border: none;
     border-radius: 30px;
+    color: #fff;
 }
 
 .btn-primary:hover {
@@ -60,4 +71,13 @@ input {
     font-size: 18px;
     font-weight: bolder;
     border-radius: 50%;
+    text-align: center;
+}
+
+.value-btn button {
+   margin-top : 20px;  
+   padding: 15px;
+   border-radius: 20px;
+   background-color: brown;
+   color: white;
 }

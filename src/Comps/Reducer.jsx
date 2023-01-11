@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react'
 
 
-const initialState = { count: 10, value: 10};
+ const initialState = { count: 10, value:""};
 
 function reducer(state, action){
     switch(action.type){
@@ -11,23 +11,24 @@ function reducer(state, action){
       case 'Decrement':{
         return {...state, count: state.count - 1}
       };
-      case 'Add': {
-        return {...state, count: state.count + parseInt(state.value, 10)}
-      }
-      case 'Subtract': {
-        return {...state, count: state.count - parseInt(state.value, 10)}
-      }
+        
       case 'changeValue':{
         return {...state, 
-            value:action.payload}
-      }
+           value: action.payload}
+      };
+        
       case 'Reset':{
         return initialState
-      }
-      default: throw error()
-  } 
+     };
 
+      case "setCount":
+      return { ...state, 
+          count: action.payload };
+    default:
+      throw new Error("Invalid action type");
   }
+};
+
 
   export default function Reducer(){
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -45,26 +46,20 @@ function reducer(state, action){
     })
   }
   
-function handleAddition(){
-dispatch({
-      type: 'Add'
-})
-}
-
-function handleSubtraction(){
-  if(state.value)
-  dispatch({
-        type: 'Subtract'
-  })
-  }
-
+        
 function handleChange(e){
-    e.preventdefault()
     dispatch({
-      type: 'count',
-      payload: 'e.target.value'
+      type: "changeValue", 
+      payload: e.target.value
     })
 }
+    
+    function handleClickButton() {
+    dispatch({
+      type: "setCount",
+      payload: state.value - 0,
+    });
+  }; 
 
   function Reset() {
     dispatch({
@@ -75,9 +70,8 @@ function handleChange(e){
         state, 
         Increment, 
         Decrement, 
-        handleAddition, 
-        handleSubtraction, 
         handleChange, 
+        handleClickButton, 
         Reset,
-  }
-  } 
+ }     
+ }     
